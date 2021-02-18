@@ -1,12 +1,47 @@
 package com.example.server.model;
 
+
+
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="pokemon_name")
 public class Pokemons {
+
+    @Id
+    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column
     private String name;
+    @Column
     private String type;
+    @Column
     private int level;
+    @Column
     private Boolean found;
+    @Column
+    private String ability;
 
     public Pokemons(){}
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getAbility() {
+        return ability;
+    }
+
+    public void setAbility(String ability) {
+        this.ability = ability;
+    }
 
     public String getName() {
         return name;
