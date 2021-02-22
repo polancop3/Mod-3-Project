@@ -1,5 +1,6 @@
 package com.example.server.controller;
 
+import com.example.server.model.Pokemons;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,8 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/pokemon")
 
 public class PokemonsController {
-@GetMapping
-    public String hi(){
-    return "hola";
-}
+//@GetMapping
+//Iterable<Pokemons> getPokemons(){return}
 }
