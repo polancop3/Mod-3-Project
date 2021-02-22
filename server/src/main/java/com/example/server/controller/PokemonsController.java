@@ -3,9 +3,8 @@ package com.example.server.controller;
 import com.example.server.model.Pokemons;
 import com.example.server.service.PokemonService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/pokemon")
@@ -15,4 +14,18 @@ public class PokemonsController {
     PokemonService pokemonService;
     @GetMapping
     Iterable<Pokemons> getPokemons(){return pokemonService.getPokemons();}
+
+    @PostMapping
+    public Pokemons createPokemons(@RequestBody Pokemons pokemon){
+        return pokemonService.createPokemons(pokemon);
+    }
+    @PatchMapping
+    public Pokemons updatePokemons(@RequestBody Pokemons pokemon) {
+        return pokemonService.updatePokemons(pokemon);
+    }
+    @DeleteMapping("/{id}")
+    public HttpStatus deletePokemon (@PathVariable Long id){
+        return pokemonService.deletePokemons(id);
+    }
+
 }
