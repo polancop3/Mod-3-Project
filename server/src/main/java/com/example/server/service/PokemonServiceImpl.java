@@ -4,7 +4,9 @@ import com.example.server.model.Pokemons;
 import com.example.server.repository.PokemonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
 
+@Service
 public class PokemonServiceImpl implements PokemonService{
     @Autowired
     PokemonRepository pokemonRepository;
