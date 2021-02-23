@@ -6,14 +6,25 @@ class Pokemon extends React.Component {
         constructor(props){
         super(props)
         this.state = {}
-        this.handleChange = this.handleChange.bind(this)
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
       }
-      handleSubmit(e){
+      async handleSubmit(e){
         e.preventDefault(e)
+        const {name,type,level,found,ability} = this.state;
+        const pokemons = {name,type,level,found,ability};
+        try{    
+                const res = await axios.post(url, pokemons);
+                const updateRes = axios.get(url);
+                this.setState({ pokedex: updateRes.data });
+
+        } catch(e) {
+            console.error(e.message)
+        }
+
       }
       handleChange(e){
           this.setState({[e.target.name]: e.target.value})
-          console.log({[e.target.name]: e.target.value})
       }
 
     async getPokemon(){
